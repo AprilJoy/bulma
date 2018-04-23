@@ -1,0 +1,4 @@
+1.关于跨域问题
+使用cors
+参考https://github.com/expressjs/cors
+http://www.ruanyifeng.com/blog/2016/04/cors.html

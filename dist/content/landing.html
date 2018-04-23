@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landing - Free Bulma template</title>
+  <link rel="stylesheet" href="/bulma.17279158.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <!-- Bulma Version 0.6.2-->
+  <link rel="stylesheet" type="text/css" href="/landing.51c3abb3.css">
+
+
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+
+  <!--
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  -->
+<script src="/bulma.17279158.js"></script><script src="/landing.51c3abb3.js"></script><link rel="stylesheet" href="/index.css"></head>
+<body>
+  <section class="hero is-info is-fullheight">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="/dc31271d65e43e2cc9f2439354ad584c.">
+              <img src="/67373.9f3446f7.png" alt="Logo">
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+              <span class="navbar-item">
+                <a class="button is-white is-outlined" href="#">
+                  <span class="icon">
+                    <i class="fa fa-home"></i>
+                  </span>
+                  <span>Home</span>
+                </a>
+              </span>
+              <span class="navbar-item">
+                <a class="button is-white is-outlined" href="#">
+                  <span class="icon">
+                    <i class="fa fa-superpowers"></i>
+                  </span>
+                  <span>Examples</span>
+                </a>
+              </span>
+              <span class="navbar-item">
+                <a class="button is-white is-outlined" href="#">
+                  <span class="icon">
+                    <i class="fa fa-book"></i>
+                  </span>
+                  <span>Documentation</span>
+                </a>
+              </span>
+              <span class="navbar-item">
+                <a class="button is-white is-outlined" href="https://github.com/AprilJoy">
+                  <span class="icon">
+                    <i class="fa fa-github"></i>
+                  </span>
+                  <span>View Source</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-6 is-offset-3">
+          <h1 class="title">
+            Coming Soon
+          </h1>
+          <h2 class="subtitle">
+            提交你的联系方式和问题，我会尽快回复
+          </h2>
+          <div class="box">
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Hi</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" id="hi" type="text" placeholder="e.g. test">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Name</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" id="name" type="text" placeholder="e.g. Dongshaoyang" required="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Question</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <textarea class="textarea" id="problem_content" placeholder="Explain how we can help you"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="field is-horizontal">
+                <div class="field-label">
+                  <!-- Left empty for spacing -->
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <button class="button is-info submit">
+                        Send message
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">消息</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <label class="lebal has-text-grey">提交成功,我会尽快处理</label>
+        </section>
+       
+      </div>
+    </div>
+
+  </section>
+  <script>
+    jQuery(".delete").click(function(){
+      $(".modal").removeClass("is-active");
+    });
+    jQuery(".submit").click(function(){
+      console.log('opo');
+      var hi = $("#hi").val();
+      var name = $("#name").val();
+      var problem_content = $("#problem_content").val();
+      
+      var postData = {"hi": hi, "name": name, "content": problem_content};
+      var reqUrl = "http://127.0.0.1:8080/api/getQuestion";
+
+      $.ajax({
+                type:'post',        
+                url:reqUrl,
+                data: postData,
+                dataType:"json",      //返回的数据类型，定义为jsonp
+                success:function(data){
+                    console.log(data);
+                    $(".modal").addClass("is-active");
+                },
+                error: function (e) {
+                  console.log(e);
+                  console.log('erro');
+                }
+            });
+            
+    });
+  </script>
+  <!--
+  <script async type="text/javascript" src="../js/bulma.js"></script>
+  -->
+  
+</body>
+</html>
