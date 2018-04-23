@@ -1,3 +1,11 @@
+## 技术栈
+前端代码使用bulma的css库，后端server使用express，存储使用mongo
+
+## 使用
+parcel  index.html
+node server.js
+mongod --dbpath /usr/local/var/mongodb --port 8900
+
 1.关于跨域问题
 使用cors
 参考https://github.com/expressjs/cors
